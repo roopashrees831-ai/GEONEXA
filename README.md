@@ -41,6 +41,3 @@ GEONEXA is a disaster monitoring platform that combines terrain information, wea
 - Emergency assistance information
 - Multi-language support
 
-## Developer
-
-Ranjitha B K
