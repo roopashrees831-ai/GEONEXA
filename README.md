@@ -1,37 +1,46 @@
-# GEONEXA
+﻿# GEONEXA
 
-**MONITOR | ALERT | PROTECT**
+**AI-Based Landslide Monitoring and Early Warning System**
 
-AI-based landslide monitoring and early warning system.
+GEONEXA is a disaster monitoring platform that combines terrain information, weather data, location services, and image-based hazard screening to support landslide and disaster awareness.
 
-## ?? Live Website
+## Live Website
 
-[Open GEONEXA Website](https://unique-truffle-7d8380.netlify.app)
+[Open GEONEXA Web Application](https://unique-truffle-7d8380.netlify.app)
 
-## ?? Android App
+## Android Application
 
-[?? Download GEONEXA APK](https://github.com/roopashrees831-ai/GEONEXA/blob/main/GEONEXA.apk)
+[Download GEONEXA APK](https://github.com/roopashrees831-ai/GEONEXA/blob/main/GEONEXA.apk)
 
-## ?? Project
-
-GEONEXA combines terrain information, weather data, location services and image-based hazard screening to support landslide and disaster monitoring.
-
-## ??? Technologies
+## Key Technologies
 
 - Flutter
 - Dart
-- OpenFreeMap / MapLibre
+- MapLibre
+- OpenFreeMap
 - Open-Meteo
-- OpenStreetMap / Nominatim
+- OpenStreetMap
+- Nominatim
 - India PIN Code API
 - Google ML Kit
-- Android sensors and GPS
+- GPS and Android sensors
 
-## ?? Platform
+## Platforms
 
-- Android application
-- Web application
+- Android
+- Web
 
-## ????? Developer
+## Project Features
+
+- Landslide and hazard monitoring
+- Interactive terrain visualization
+- Weather and rainfall information
+- Location and PIN-based search
+- Image-based disaster screening
+- Risk-level assessment
+- Emergency assistance information
+- Multi-language support
+
+## Developer
 
 Ranjitha B K
