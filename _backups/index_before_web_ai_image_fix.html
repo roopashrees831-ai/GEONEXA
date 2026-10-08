@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <base href="$FLUTTER_BASE_HREF">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="A new Flutter project.">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="GEONEXA">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>GEONEXA</title>
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <!--
+    You can customize the "flutter_bootstrap.js" script.
+    This is useful to provide a custom configuration to the Flutter loader
+    or to give the user feedback during the initialization process.
+
+    For more details:
+    * https://docs.flutter.dev/platform-integration/web/initialization
+  -->
+  <script src="flutter_bootstrap.js" async></script>
+<script id="geonexa-camera">
+
+window.geonexaCapturePhoto =
+async function () {
+
+  if (
+    !navigator.mediaDevices ||
+    !navigator.mediaDevices.getUserMedia
+  ) {
+    alert(
+      "Camera is not available in this browser."
+    );
+
+    return "";
+  }
+
+
+  let stream;
+
+  try {
+
+    stream =
+      await navigator.mediaDevices.getUserMedia({
+        video: {
+          facingMode: {
+            ideal: "environment"
+          }
+        },
+        audio: false
+      });
+
+  } catch (error) {
+
+    alert(
+      "Camera permission is blocked. Please allow camera access in Chrome."
+    );
+
+    return "";
+  }
+
+
+  return await new Promise(
+    function(resolve) {
+
+      const overlay =
+        document.createElement("div");
+
+      overlay.style.position =
+        "fixed";
+
+      overlay.style.inset =
+        "0";
+
+      overlay.style.zIndex =
+        "999999";
+
+      overlay.style.background =
+        "rgba(0,0,0,.88)";
+
+      overlay.style.display =
+        "flex";
+
+      overlay.style.alignItems =
+        "center";
+
+      overlay.style.justifyContent =
+        "center";
+
+
+      const panel =
+        document.createElement("div");
+
+      panel.style.width =
+        "min(94vw,700px)";
+
+      panel.style.background =
+        "#061724";
+
+      panel.style.padding =
+        "14px";
+
+      panel.style.borderRadius =
+        "18px";
+
+      panel.style.border =
+        "1px solid #2a6d67";
+
+      panel.style.boxShadow =
+        "0 20px 60px rgba(0,0,0,.5)";
+
+
+      const title =
+        document.createElement("div");
+
+      title.innerText =
+        "GEONEXA Camera";
+
+      title.style.color =
+        "#5de0b5";
+
+      title.style.fontWeight =
+        "800";
+
+      title.style.fontSize =
+        "18px";
+
+      title.style.marginBottom =
+        "10px";
+
+
+      const video =
+        document.createElement("video");
+
+      video.autoplay =
+        true;
+
+      video.playsInline =
+        true;
+
+      video.muted =
+        true;
+
+      video.style.width =
+        "100%";
+
+      video.style.maxHeight =
+        "65vh";
+
+      video.style.objectFit =
+        "cover";
+
+      video.style.background =
+        "#000";
+
+      video.style.borderRadius =
+        "14px";
+
+
+      const buttons =
+        document.createElement("div");
+
+      buttons.style.display =
+        "flex";
+
+      buttons.style.justifyContent =
+        "center";
+
+      buttons.style.gap =
+        "12px";
+
+      buttons.style.marginTop =
+        "14px";
+
+
+      const capture =
+        document.createElement("button");
+
+      capture.innerText =
+        "Take photo";
+
+      capture.style.padding =
+        "12px 24px";
+
+      capture.style.border =
+        "0";
+
+      capture.style.borderRadius =
+        "12px";
+
+      capture.style.background =
+        "#5de0b5";
+
+      capture.style.color =
+        "#04151e";
+
+      capture.style.fontWeight =
+        "800";
+
+      capture.style.cursor =
+        "pointer";
+
+
+      const cancel =
+        document.createElement("button");
+
+      cancel.innerText =
+        "Cancel";
+
+      cancel.style.padding =
+        "12px 24px";
+
+      cancel.style.borderRadius =
+        "12px";
+
+      cancel.style.border =
+        "1px solid #5de0b5";
+
+      cancel.style.background =
+        "transparent";
+
+      cancel.style.color =
+        "#ffffff";
+
+      cancel.style.fontWeight =
+        "700";
+
+      cancel.style.cursor =
+        "pointer";
+
+
+      function cleanup() {
+
+        if (stream) {
+
+          stream
+            .getTracks()
+            .forEach(
+              function(track) {
+                track.stop();
+              }
+            );
+
+        }
+
+        overlay.remove();
+
+      }
+
+
+      capture.onclick =
+      function() {
+
+        if (
+          !video.videoWidth ||
+          !video.videoHeight
+        ) {
+          return;
+        }
+
+
+        const canvas =
+          document.createElement(
+            "canvas"
+          );
+
+
+        canvas.width =
+          video.videoWidth;
+
+        canvas.height =
+          video.videoHeight;
+
+
+        const context =
+          canvas.getContext("2d");
+
+
+        context.drawImage(
+          video,
+          0,
+          0,
+          canvas.width,
+          canvas.height
+        );
+
+
+        const result =
+          canvas.toDataURL(
+            "image/jpeg",
+            0.82
+          );
+
+
+        cleanup();
+
+        resolve(result);
+
+      };
+
+
+      cancel.onclick =
+      function() {
+
+        cleanup();
+
+        resolve("");
+
+      };
+
+
+      panel.appendChild(title);
+      panel.appendChild(video);
+      buttons.appendChild(capture);
+      buttons.appendChild(cancel);
+      panel.appendChild(buttons);
+      overlay.appendChild(panel);
+
+      document.body.appendChild(
+        overlay
+      );
+
+
+      video.srcObject =
+        stream;
+
+
+      video.play().catch(
+        function() {}
+      );
+
+    }
+  );
+};
+
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "468363006865",
+    "project_id": "landslideguard-ai-26001",
+    "storage_bucket": "landslideguard-ai-26001.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:468363006865:android:3efd1ab6eae75c7a3fc030",
+        "android_client_info": {
+          "package_name": "com.landslideguard.landslide_guard"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLx91CkpIXOrzFRdl0g_WO5dEFO1nIeUY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

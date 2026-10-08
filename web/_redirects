@@ -1,0 +1,4 @@
+﻿/api/ndma-json https://sachet.ndma.gov.in/cap_public_website/FetchAllAlertDetails 200
+/api/ndma-rss https://sachet.ndma.gov.in/cap_public_website/rss/rss_india.xml 200
+
+/* /index.html 200
